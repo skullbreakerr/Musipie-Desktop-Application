@@ -9,24 +9,30 @@ export const PlayerContext = createContext({
 export default function PlayerContextProvider({ children }) {
 
     const [isPlaying, setIsPlaying] = useState(true);
-    const [currentAudioData, setCurrentAudioData] = useState({});
+    const [currentAudioData, setCurrentAudioData] = useState(DummyMusic[0]);
     const [queue, setQueue] = useState(DummyMusic);
 
 
+    function favouriteFinder(title) {
+        const track = DummyMusic.find(track => track.title === title);
+
+        return track ? track.favourite : false;
+    }
 
     function handlePlayTrack(title, artists, img, src, color) {
         const updateCurrentAudio = {
             title: title,
             artists: artists,
             img: img,
+            favourite: favouriteFinder(title),
             src: src,
             color: color
         }
         setCurrentAudioData(updateCurrentAudio);
         setIsPlaying(true);
     }
- 
-    
+
+
     function handleAddToQueue(song) {  //favourite,title,img,artists,src
 
         if (queue.length === 0) {
@@ -37,7 +43,7 @@ export default function PlayerContextProvider({ children }) {
             })
         }
     }
-  
+
     function handleRemoveFromQueue(index) {
         const newQueue = [...queue];
         newQueue.splice(index, 1);
@@ -61,16 +67,17 @@ export default function PlayerContextProvider({ children }) {
     function handlePlayPrevious() {
         if (queue.length > 0) {
             const currentIndex = queue.findIndex(song => song.src === currentAudioData.src);
-            if (currentIndex !== 1) {
-                if (currentIndex < queue.length - 1) {
-                    setCurrentAudioData(queue[currentIndex - 1]);
-                } else {
-                    setCurrentAudioData(queue[currentIndex]);
-                    setIsPlaying(false);
-                }
+            if (currentIndex === -1) {
+                return;
+            } else if (currentIndex === 0) {
+                setCurrentAudioData(queue[queue.length - 1]);
+            } else {
+                setCurrentAudioData(queue[currentIndex - 1]);
             }
+            setIsPlaying(true);
         }
     }
+   
     function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -97,7 +104,7 @@ export default function PlayerContextProvider({ children }) {
         playNext: handlePlayNext,
         playPrevious: handlePlayPrevious,
         addToQueue: handleAddToQueue,
-        removeFromQueue:handleRemoveFromQueue,
+        removeFromQueue: handleRemoveFromQueue,
         getDuration: formatTime,
         shuffleMusic: handleShuffle,
         queueList: queue,
