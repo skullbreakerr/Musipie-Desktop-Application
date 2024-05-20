@@ -1,3 +1,4 @@
+'use client';
 import { useContext, useState } from "react";
 import { ContentContext } from '../song-contexts/content-context';
 import ArtistsPage from "./ArtistsPage.jsx";

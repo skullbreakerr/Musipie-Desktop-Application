@@ -1,3 +1,4 @@
+'use client';
 import React,{useContext, useState}  from 'react';
 import { ContentContext } from '../song-contexts/content-context';
 const Header = ({ title, children }) => {

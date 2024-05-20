@@ -1,3 +1,4 @@
+'use client';
 import React, { useContext, useState } from 'react';
 import { Modal } from './Modal';
 import { ContentContext } from '../song-contexts/content-context';

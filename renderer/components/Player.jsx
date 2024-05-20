@@ -1,3 +1,4 @@
+'use client';
 import { ContentContext } from '../song-contexts/content-context';
 import { PlayerContext } from '../song-contexts/player-context';
 import React, { useContext, useEffect, useRef, useState } from 'react'

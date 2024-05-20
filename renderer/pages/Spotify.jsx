@@ -1,3 +1,4 @@
+'use client'
 import React, { useContext, useEffect, useState } from 'react';
 import { SpotifyContext } from '../song-contexts/spotify-context.jsx';
 import Playlist from '../components/Playlist.jsx';
