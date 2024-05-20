@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Button } from './Button';
-import Spotify from '../pages/Spotify';
+import Spotify from '../Spotify Pages/Spotify';
 import Favourite from '../Favourite Pages/Favourite';
 import { Tracks } from '../Tracks Pages/Tracks';
 import { ContentContext } from '../song-contexts/content-context';
