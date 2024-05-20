@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+/* Navigation  */
+nav{
+  @apply w-full bg-slate-100  h-[10%] p-2 mb-2;
+}
+nav ul{
+  @apply flex gap-5 p-2 justify-center;
+}
+nav ul li{
+  @apply p-1 pl-2 rounded-md hover:bg-slate-200;
+} 
+ 
+.active{
+  @apply  bg-slate-200 ;
+}
+
+/* Playlist  */
+.playlist-container{
+  @apply  w-full grid grid-cols-4 overflow-x-hidden justify-center  py-3 my-1;
+}
+.playlist-title{
+  @apply  pl-3 pt-1 font-semibold text-xl;
+}
+
+/* Song-card */
+.song-card{
+  @apply  w-fit my-2 mx-2 p-1  ;
+}
+
+.song-card img{
+  @apply rounded-md;
+}
+
+.song-card h4{
+  @apply pt-1 font-bold text-lg text-center
+}
+
+.song-card p{
+  @apply pt-2 font-light text-center;
+}
+
+/* Upload-Modal  */
+
+#upload-modal{
+  @apply  flex flex-col  items-center  rounded-lg  p-2  bg-transparent;
+} 
+
+#upload-modal input{
+  @apply rounded-lg py-1 px-2 mt-4 w-full;
+}
+
+/* Details Page */
+#details-page{
+  @apply flex mt-4 w-full h-auto justify-around;
+}
+
+#track-img{
+  @apply flex flex-col items-center justify-center w-full h-full p-2;
+}
+
+#track-details{
+  @apply  flex flex-col w-full p-4 bg-slate-200 rounded-lg gap-4 overflow-auto;
+}
+
+#track-details p{
+  @apply font-extralight text-sm flex flex-col;
+}
+
+#track-details p span{
+  @apply font-semibold text-lg;
+}
